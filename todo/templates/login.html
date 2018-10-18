@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static "login.css" %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row ">
+    <div class="col-12 align-self-center justify-self-start">
+      <div class="col-6 justify-self-center">
+        <h2 class="text-secondary mt-2 ">Login</h2>
+        <hr>
+      </div>
+    </div>
+    <div class="col-4 justify-self-start">
+      <img src="{% static "images.png" %}" class="rounded mx-auto d-block">
+    </div>
+    <div class="col-4 align-self-center justify-self-start">
+      <form method="post">{% csrf_token %}
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" name="username" id="username" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+          <label for="Password">Password</label>
+          <input type="password" class="form-control" name="pass" id="Password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a class="ml-2" href="{% url "register" %}">register</a>
+      </form>
+    </div>
+    <div class="col-4 justify-self-start align-self-center ">
+      {% if error %}
+      <div class="alert alert-danger" role="alert">
+        username or password wrong. check it up.
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

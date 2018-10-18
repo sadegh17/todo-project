@@ -1,0 +1,18 @@
+html , body {
+  width: 100%;
+  height: 100%;
+}
+.containe{
+  margin: auto;
+  width: 95%;
+  height: 90%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.jobs{
+  border: 1px solid lightgray;
+  padding: 20px 50px 100px 50px;
+  -webkit-box-shadow: 11px 10px 35px -8px rgba(0,0,0,0.75);
+  -moz-box-shadow: 11px 10px 35px -8px rgba(0,0,0,0.75);
+  box-shadow: 11px 10px 35px -8px rgba(0,0,0,0.75);
+}

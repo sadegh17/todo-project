@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static "personal/myjobpersonal.css" %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-2 p-0">
+  <h1 class="text-secondary d-flex justify-content-between">Personal
+    <span>
+      <h6> <strong>note:</strong> by clicking on each job it goes to next step</h6>
+    </span>
+    <span >
+    <div class="dropdown ">
+      <a class="btn btn-primary  dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        date
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <form class="dropdown-item" method="get">
+          <input class="form-control" type="date" name="date"  id="today" >
+          <button type="submit"  class="form-control" name="button">change</button>
+        </form>
+      </div>
+      <button type="button" class="btn btn-primary newjob mr-1  align-self-center " name="button">new job</button>
+    </div>
+  </span> </h1>
+  <hr>
+</div>
+<div class="containe">
+  {% if error %}
+  <div class="col-6">
+    <div class="alert alert-danger" role="alert">
+      give me a new job !!!
+    </div>
+  </div>
+  {% endif %}
+  {% if dateerror %}
+  <div class="col-6">
+    <div class="alert alert-danger" role="alert">
+      you can not add a job to past
+    </div>
+  </div>
+  {% endif %}
+  <form method="post" class=" mt-2 ml-5 mb-2  form d-none" >{% csrf_token %}
+    <div class="row">
+      <div class="col-4">
+        <input type="text" class="form-control" name="newjobtext" placeholder="new job to do">
+      </div>
+      <div class="col-2 ">
+            <form method="get">
+              <input class="form-control" type="date" data-toggle="tooltip" data-placement="top"
+              title="if you dont select a date it will be today by default" name="datenew" id="tooltip">
+            </form>
+      </div>
+      <div class="col-2">
+        <button type="submit"  class="btn btn-primary form-control" name="button">save</button>
+      </div>
+    </div>
+  </form>
+
+
+  <div class="row d-flex justify-content-around" >
+    <div class="col-3 m-2  jobs pt-1">
+      <h2 class="text-secondary">To Do</h2>
+      <hr>
+      {% for item in todo %}
+        <p class=" arrow m-0 p-1 rounded"> <a href="{% url "personal:next" slug=item.slug %}"
+          style="text-decoration:none; color:black;">{{item.content}}</a></p>
+      {% endfor %}
+    </div>
+    <div class="col-3 m-2  jobs pt-1">
+      <h2 class="text-secondary">Working</h2>
+      <hr>
+      {% for item in working %}
+        <p class=" arrow m-0 p-1 rounded" > <a href="{% url "personal:next" slug=item.slug %}"
+          style="text-decoration:none; color:black;">{{item.content}}</a> </p>
+      {% endfor %}
+    </div>
+    <div class="col-3 m-2  jobs pt-1">
+      <h2 class="text-secondary">Done</h2>
+      <hr>
+      {% for item in done %}
+        <p>{{item.content}}</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static "personal/myjobpersonal.js" %}" charset="utf-8"></script>
+{% endblock %}

@@ -1,0 +1,16 @@
+.card:hover .card-body{
+  background-color: #2AB8B8;
+  color: white;
+
+}
+.card{
+  border-color: white;
+}
+.card:hover{
+  border-color: #2AB8B8;
+}
+.card:hover .btn{
+  background-color: white;
+  border-color: white;
+  color: black;
+}

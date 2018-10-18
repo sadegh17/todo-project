@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static "home/home.css" %}">
+{% endblock %}
+
+{% block content %}
+  <style media="screen">
+    html , body{
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <div class="container d-flex justify-content-center align-items-center"  style="height:100%;">
+      <div class="row justify-content-center">
+        <div class="col-3 m-2">
+          <div class="card ">
+            <img class="card-img-top" style="opacity:.7;" width="250px" height="250px" src="{% static "home/person.png" %}" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Personal</h5>
+              <p class="card-text">Check your personal jobs and create new if you want.</p>
+              <a href="{% url "personal:base" %}" class="btn btn-primary">See That</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 m-2">
+          <div class="card">
+            <img class="card-img-top" style="opacity:.7;"  width="250px" height="250px" src="{% static "home/group1.png" %}" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Your Group</h5>
+              <p class="card-text">Here you can see your group  list and check them.</p>
+              <a href="#" class="btn btn-primary">See That</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 m-2 ">
+          <div class="card">
+            <img class="card-img-top" style="opacity:.7;"  width="250px" height="250px" src="{% static "home/new.png" %}" alt="">
+            <div class="card-body">
+              <h5 class="card-title">New Group</h5>
+              <p class="card-text">Create new group with your friends and see jobs of each other.</p>
+              <a href="{% url "group:newgp" %}" class="btn btn-primary">See That</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+{% endblock %}

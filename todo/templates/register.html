@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static "register.css" %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row ">
+    <div class="col-12 align-self-center justify-self-start">
+      <div class="col-6 justify-self-center">
+        <h2 class="text-secondary mt-2 ">Register</h2>
+        <hr>
+      </div>
+    </div>
+    <div class="col-4 justify-self-start">
+      <img src="{% static "register.png" %}" class="rounded mx-auto d-block">
+    </div>
+    <div class="col-4 align-self-center justify-self-start">
+      <form method="post">{% csrf_token %}
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" required name="username" id="username" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" required name="email" id="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <label for="Password">Password</label>
+          <input type="password" class="form-control"  required name="pass" id="Password" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <label for="Password2">Password Again</label>
+          <input type="password" class="form-control" required name="passagain" id="Password2" placeholder="Password again">
+        </div>
+        <button type="submit" id="register"  disabled class="btn btn-primary">Register</button>
+        <a class="ml-2" href="{% url "login" %}" >you already heva an account</a>
+      </form>
+    </div>
+    <div class="col-4 justify-self-start align-self-center ">
+      {% if error %}
+      <div class="alert alert-danger" role="alert">
+        username or password wrong. check it up.
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static "register.js" %}" charset="utf-8"></script>
+{% endblock %}
